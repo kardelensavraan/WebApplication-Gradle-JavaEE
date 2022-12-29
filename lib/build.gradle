@@ -1,0 +1,33 @@
+plugins {
+id 'java'
+id 'war'
+}
+
+group = 'gradlepp'
+version = '1.0'
+
+repositories {
+mavenCentral()
+}
+
+dependencies {
+// https://mvnrepository.com/artifact/org.wildfly/wildfly-ee
+providedCompile group: 'org.wildfly', name: 'wildfly-ee', version: '19.0.0.Final'
+// https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+// https://mvnrepository.com/artifact/com.mashape.unirest/unirest-java
+implementation group: 'com.mashape.unirest', name: 'unirest-java', version: '1.4.9'
+// https://mvnrepository.com/artifact/javax.xml.soap/javax.xml.soap-api
+implementation group: 'javax.xml.soap', name: 'javax.xml.soap-api', version: '1.4.0'
+implementation 'redis.clients:jedis:2.8.0'
+}
+
+compileJava {
+targetCompatibility = '1.8'
+sourceCompatibility = '1.8'
+}
+
+war {
+archiveName 'lib.war'
+}
+
